@@ -32,13 +32,13 @@ class BlogIndex extends React.Component {
       </Layout>
     )
   }
-}
+}	
 
 export default BlogIndex
 
 export const pageQuery = graphql`
   query BlogIndexQuery {
-    allContentfulBlogPost(sort: { fields: [publishDate], order: DESC }) {
+    allContentfulBlogPost(sort: {fields: [publishDate], order: DESC}, filter: {node_locale: {eq: "en-US"}}) {
       edges {
         node {
           title
@@ -51,7 +51,7 @@ export const pageQuery = graphql`
             }
           }
           description {
-            childMarkdownRemark {
+            childMarkdownRemark { 
               html
             }
           }
